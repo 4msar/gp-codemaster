@@ -76,8 +76,9 @@ class PaymentController extends Controller
      * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show($payment)
     {
+        $payment = Payment::findOrFail($payment);
         return response()->json([
             'status' => true,
             'data' => $payment
@@ -90,8 +91,9 @@ class PaymentController extends Controller
      * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payment $payment)
+    public function destroy($payment)
     {
+        $payment = Payment::findOrFail($payment);
         if( $payment->delete()() ){
             return response()->json([
                 'status' => true,

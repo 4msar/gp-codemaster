@@ -1,0 +1,972 @@
+{
+	"info": {
+		"_postman_id": "933db524-0f5e-4ce7-b12a-e28966e58af6",
+		"name": "GP-CM",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth / Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Akash",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "akash@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Akash2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/register",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth / Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "akash@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Akash2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/login",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth / Refresh",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "akash@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Akash2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/auth/refresh",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth / Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/auth/logout",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth / Me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/auth/me",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Get List of Customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/app/customers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Save Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "Akash",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Khan",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "akash@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Akash2020",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "01644973410",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/customers",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Get Single Customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/app/customers/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Delete Single Customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "Hasan",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Kairu",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/customers/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Update Single Customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"Hasan\",\n    \"last_name\":\"Kairu\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/customers/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Get List of Room",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "room_number",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "200",
+							"type": "text"
+						},
+						{
+							"key": "max_persons",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "room_type",
+							"value": "duplex",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/rooms",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Save Room",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "room_number",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "200",
+							"type": "text"
+						},
+						{
+							"key": "max_persons",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "room_type",
+							"value": "duplex",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/rooms",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Update Room",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"room_number\":101,\n    \"price\":200,\n    \"max_persons\":2,\n    \"room_type\":\"duplex\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/rooms/3",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"rooms",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Get Single Room",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "room_number",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "200",
+							"type": "text"
+						},
+						{
+							"key": "max_persons",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "room_type",
+							"value": "duplex",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/rooms/3",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"rooms",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Delete Single Room Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/app/rooms/3",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"rooms",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / List of Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/app/bookings",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Save Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "room_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "room_number",
+							"value": "101",
+							"type": "text"
+						},
+						{
+							"key": "customer_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "arrival",
+							"value": "2020-12-20 10:10",
+							"type": "text"
+						},
+						{
+							"key": "checkout",
+							"value": "2020-12-20 10:15",
+							"type": "text"
+						},
+						{
+							"key": "book_type",
+							"value": "advanced",
+							"type": "text"
+						},
+						{
+							"key": "book_time",
+							"value": "2020-12-19 16:00",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "200",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/bookings",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Update Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"room_id\":\"1\",\n    \"room_number\": 210,\n    \"arrival\": \"2020-12-20 10:10:12\",\n    \"checkout\": \"2020-12-20 10:15:12\",\n    \"book_type\": \"advanced\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/bookings/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"bookings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Check In Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"arrival\": \"2020-12-20 10:10:12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/bookings/1/checkin",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"bookings",
+						"1",
+						"checkin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Check Out Booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"checkout\":\"2020-12-20 10:10:11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/bookings/1/checkout",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"bookings",
+						"1",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Save Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "customer_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "booking_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "200",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/payments",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Get Single Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/app/payments/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"payments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App / Delete Single Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{ACCESS_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/app/payment/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"app",
+						"payment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cee4846e-8eb4-40d7-a9c5-e9f322c7709b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ac80a664-b269-42f6-b939-2d4e6d24b8bc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5175469f-ee5c-4d4e-b4d0-46f338c1ce17",
+			"key": "ACCESS_TOKEN",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ncC1jbS50ZXN0XC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwODM4MDMwOCwiZXhwIjoxNjA4MzgzOTA4LCJuYmYiOjE2MDgzODAzMDgsImp0aSI6IldLNEY4WnY3M3VGZ3BoOXYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.B7EJ05VS4W0A_EROzYqX3_am7wXifPPkHumVXzOakkU"
+		},
+		{
+			"id": "b9c99985-ddbe-4c5f-b05e-a3c1d411deba",
+			"key": "BASE_URL",
+			"value": "http://gp-cm.test"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

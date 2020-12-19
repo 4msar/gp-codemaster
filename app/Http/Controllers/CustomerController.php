@@ -74,9 +74,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($customer)
     {
-        return new CustomerResponse($customer);
+        $customer = Customer::findOrFail($customer);
+        return (new CustomerResponse($customer))->additional(['status'=>true]);
     }
 
     /**
@@ -86,14 +87,15 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $customer)
     {
+        $customer = Customer::findOrFail($customer);
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:191',
-            'last_name' => 'required|string|max:191',
-            'email' => "required|email|unique:users,email,{$customer->id}",
-            'password' => 'required|string|min:8',
-            'phone' => "required|unique:users,phone,{$customer->id}",
+            'first_name' => 'sometimes|required|string|max:191',
+            'last_name' => 'sometimes|required|string|max:191',
+            'email' => "sometimes|required|email|unique:users,email,{$customer->id}",
+            'password' => 'sometimes|required|string|min:8',
+            'phone' => "sometimes|required|unique:users,phone,{$customer->id}",
         ]);
         if ( $validator->fails() ) {
             return response()->json([
@@ -111,7 +113,7 @@ class CustomerController extends Controller
         if( $customer->save() ){
             return response()->json([
                 'status' => true,
-                'message' => "Registered Successfully!",
+                'message' => "Update Successfully!",
             ], 201);
         }
         return response()->json([
@@ -126,8 +128,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($customer)
     {
+        $customer = Customer::findOrFail($customer);
         if( $customer->delete()() ){
             return response()->json([
                 'status' => true,

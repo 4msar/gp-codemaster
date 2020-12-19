@@ -19,8 +19,8 @@ class RoomResponse extends JsonResource
             'room_number' => $this->room_number,
             'price' => $this->price,
             // 'locked' => $this->locked,
-            'max_persons' => $this->max_persons.
-            'room_type' => $this->room_type.
+            'max_persons' => $this->max_persons,
+            'room_type' => $this->room_type,
         ];
         // return parent::toArray($request);
     }

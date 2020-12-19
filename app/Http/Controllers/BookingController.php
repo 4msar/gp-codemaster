@@ -35,10 +35,10 @@ class BookingController extends Controller
             'room_id' => 'required',
             'room_number' => 'required',
             'customer_id' => 'required',
-            'arrival' => 'nullable|date', 
-            'checkout' => 'nullable|date', 
+            'arrival' => 'nullable|date|date_format:Y-m-d H:i:s', 
+            'checkout' => 'nullable|date|date_format:Y-m-d H:i:s', 
             'book_type' => 'required', 
-            'book_time' => 'nullable|date',
+            'book_time' => 'nullable|date|date_format:Y-m-d H:i:s',
             'amount' => 'sometimes|required'
         ]);
         if ( $validator->fails() ) {
@@ -93,15 +93,16 @@ class BookingController extends Controller
      * @param  Request $request
      * @return mixed|json
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $booking)
     {
+        $booking = Booking::findOrFail($booking);
         $validator = Validator::make($request->all(), [
             'room_id' => 'nullable',
             'room_number' => 'required_with:room_id',
-            'arrival' => 'required|datetime', 
-            'checkout' => 'nullable|datetime', 
+            'arrival' => 'required|date', 
+            'checkout' => 'nullable|date', 
             'book_type' => 'required', 
-            'book_time' => 'nullable|datetime'
+            'book_time' => 'nullable|date'
         ]);
         if ( $validator->fails() ) {
             return response()->json([
@@ -128,7 +129,7 @@ class BookingController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => "Update Successfully!",
-                'data' => $book
+                'data' => $booking
             ], 201);
         }
         return response()->json([
@@ -142,10 +143,10 @@ class BookingController extends Controller
      * @param  Request $request
      * @return mixed|json
      */
-    public function checkIn(Request $request, Booking $booking)
+    public function checkIn(Request $request, $booking)
     {
         $validator = Validator::make($request->all(), [
-            'arrival' => 'required|datetime', 
+            'arrival' => 'required|date|date_format:Y-m-d H:i:s', 
         ]);
         if ( $validator->fails() ) {
             return response()->json([
@@ -154,6 +155,7 @@ class BookingController extends Controller
                 'all_errors' => $validator->errors()
             ], 423);
         }
+        $booking = Booking::findOrFail($booking);
 
         $booking->fill([
             'arrival' => $request->arrival, 
@@ -176,10 +178,10 @@ class BookingController extends Controller
      * @param  Request $request
      * @return mixed|json
      */
-    public function checkOut(Request $request, Booking $request)
+    public function checkOut(Request $request, $booking)
     {
         $validator = Validator::make($request->all(), [
-            'checkout' => 'required|datetime', 
+            'checkout' => 'required|date|date_format:Y-m-d H:i:s', 
         ]);
         if ( $validator->fails() ) {
             return response()->json([
@@ -188,6 +190,7 @@ class BookingController extends Controller
                 'all_errors' => $validator->errors()
             ], 423);
         }
+        $booking = Booking::findOrFail($booking);
 
         $booking->fill([
             'checkout' => $request->checkout, 

@@ -28,4 +28,4 @@ Password: `password`
 
 
 ## Docs
-API Docs can be found [here](https://app.swaggerhub.com/apis-docs/msar/GP-Hackathon/1.0.0)
+API Docs can be found [here](https://documenter.getpostman.com/view/6479338/TVssjofs)

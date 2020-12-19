@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use App\Http\Resources\RoomResponse;
 use Illuminate\Support\Facades\Validator;
 
 class RoomController extends Controller
@@ -70,8 +71,9 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function show(Room $room)
+    public function show($room)
     {
+        $room = Room::findOrFail($room);
         return (new RoomResponse($room))->additional([ 'status' => true ]);
     }
     /**
@@ -81,13 +83,13 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, $room)
     {
         $validator = Validator::make($request->all(), [
-            'room_number' => 'required|string|max:191',
-            'price' => 'required|integer',
-            'max_persons' => 'required',
-            'room_type' => 'required',
+            'room_number' => 'sometimes|required|string|max:191',
+            'price' => 'sometimes|required|integer',
+            'max_persons' => 'sometimes|required',
+            'room_type' => 'sometimes|required',
         ]);
         if ( $validator->fails() ) {
             return response()->json([
@@ -96,12 +98,13 @@ class RoomController extends Controller
                 'all_errors' => $validator->errors()
             ], 423);
         }
+        $room = Room::findOrFail($room);
         $room->fill([
-            'room_number' => $request->room_number,
-            'price' => $request->price,
-            'locked' => $request->lock ?? false,
-            'max_persons' => $request->max_persons,
-            'room_type' => $request->room_type,
+            'room_number' => $request->room_number ?? $request->room_number,
+            'price' => $request->price ?? $request->price,
+            'locked' => $request->lock ?? $request->locked ?? false,
+            'max_persons' => $request->max_persons ?? $request->max_persons,
+            'room_type' => $request->room_type ?? $request->room_type,
         ]);
         if( $room ){
             return response()->json([
@@ -122,8 +125,9 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy($room)
     {
+        $room = Room::findOrFail($room);
         if( $room->delete() ){
             return response()->json([
                 'status' => true,

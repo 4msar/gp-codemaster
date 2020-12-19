@@ -45,6 +45,9 @@ $router->group([ 'prefix' => 'app', 'middleware' => 'auth:api' ], function($rout
     $router->post('bookings', 'BookingController@book');
     $router->put('bookings/{booking}', 'BookingController@update');
 
+    $router->patch('bookings/{booking}/checkin', 'BookingController@checkIn');
+    $router->patch('bookings/{booking}/checkout', 'BookingController@checkOut');
+
     // Payment Related Routes
     $router->get('payments', 'PaymentController@index');
     $router->post('payments', 'PaymentController@store');
